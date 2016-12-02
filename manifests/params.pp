@@ -4,17 +4,12 @@
 # It sets variables according to platform.
 #
 class beng_fw::params {
-  case $::osfamily {
-    'Debian': {
-      $package_name = 'beng_fw'
-      $service_name = 'beng_fw'
-    }
-    'RedHat', 'Amazon': {
-      $package_name = 'beng_fw'
-      $service_name = 'beng_fw'
-    }
-    default: {
-      fail("${::operatingsystem} not supported")
-    }
-  }
+  $tcp_public_ports = false
+  $tcp_ports_global = false
+  $tcp_extra_rule1 = false
+  $tcp_rangea_src1 = false
+  $tcp_rangea_src2 = false
+  $tcp_rangea_src3 = false
+  $tcp_rangeb = false
+  $tcp_rangec = false
 }

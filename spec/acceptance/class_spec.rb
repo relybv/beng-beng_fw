@@ -23,16 +23,5 @@ describe 'beng_fw class' do
       end
     end
 
-
-    # default module tests
-    describe package('beng_fw') do
-      it { is_expected.to be_installed }
-    end
-
-    describe service('beng_fw') do
-      it { is_expected.to be_enabled }
-      it { is_expected.to be_running }
-    end
-
   end
 end

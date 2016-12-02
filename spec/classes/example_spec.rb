@@ -17,12 +17,9 @@ describe 'beng_fw' do
           it { is_expected.to contain_class('beng_fw') }
  
           it { is_expected.to contain_class('beng_fw::params') }
-          it { is_expected.to contain_class('beng_fw::install').that_comes_before('beng_fw::config') }
-          it { is_expected.to contain_class('beng_fw::config') }
-          it { is_expected.to contain_class('beng_fw::service').that_subscribes_to('beng_fw::config') }
-
-          it { is_expected.to contain_service('beng_fw') }
-          it { is_expected.to contain_package('beng_fw').with_ensure('present') }
+          it { is_expected.to contain_class('beng_fw::install') }
+          it { is_expected.to contain_class('beng_fw::prev4') }
+          it { is_expected.to contain_class('beng_fw::postv4') }
 
         end
       end

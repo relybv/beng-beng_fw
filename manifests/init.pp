@@ -9,16 +9,19 @@
 #
 class beng_fw
 (
-  $package_name = $::beng_fw::params::package_name,
-  $service_name = $::beng_fw::params::service_name,
+  $tcp_public_ports = $::beng_fw::params::tcp_public_ports,
+  $tcp_ports_global = $::beng_fw::params::tcp_ports_global,
+  $tcp_extra_rule1 = $::beng_fw::params::tcp_extra_rule1,
+  $tcp_rangea_src1 = $::beng_fw::params::tcp_rangea_src1,
+  $tcp_rangea_src2 = $::beng_fw::params::tcp_rangea_src2,
+  $tcp_rangea_src3 = $::beng_fw::params::tcp_rangea_src3,
+  $tcp_rangeb = $::beng_fw::params::tcp_rangeb,
+  $tcp_rangec = $::beng_fw::params::tcp_rangec,
 ) inherits ::beng_fw::params {
 
   # validate parameters here
-  validate_string($package_name)
-  validate_string($service_name)
+  validate_bool($tcp_public_ports)
 
   class { '::beng_fw::install': } ->
-  class { '::beng_fw::config': } ~>
-  class { '::beng_fw::service': } ->
-  Class['::beng_fw']
+  Class[ '::beng_fw' ]
 }
