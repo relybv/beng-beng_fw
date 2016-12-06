@@ -10,6 +10,9 @@ class beng_fw::params {
   $tcp_rangea_src1 = false
   $tcp_rangea_src2 = false
   $tcp_rangea_src3 = false
+  $tcp_9300_source1= false
+  $tcp_9300_source2= false
+  $tcp_9300_source3= false
   $tcp_rangeb = false
   $tcp_rangec = false
 }
