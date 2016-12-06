@@ -16,5 +16,4 @@ class beng_fw::install {
     require => Class['beng_fw::prev4'],
   }
   class { ['beng_fw::prev4', 'beng_fw::postv4']: }
-  class { 'firewall': }
 }
