@@ -53,7 +53,7 @@ if [ -d /root/beng_fw ]; then
   git pull
 else
   echo "Cloning repo"
-  git clone https://github.com/relybv/dirict-beng_fw.git /root/beng_fw
+  git clone https://github.com/relybv/beng-beng_fw.git /root/beng_fw
   cd /root/beng_fw
 fi
 
