@@ -12,7 +12,7 @@
     [string]$role = "beng_fw"
   )
 
-  $puppet_source = "https://github.com/relybv/dirict-beng_fw.git"
+  $puppet_source = "https://github.com/relybv/beng-beng_fw.git"
 
   # check admin rights
   $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
