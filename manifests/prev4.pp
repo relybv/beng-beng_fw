@@ -32,9 +32,9 @@ class beng_fw::prev4 {
   }
 
   # Check if public ports should be allowed
-  if $tcp_public_ports != false {
+  if $::beng_fw::params::tcp_public_ports != false {
       firewall { '003 accept all TCP':
-      dport    => $tcp_public_ports,
+      dport    => $::beng_fw::params::tcp_public_ports,
       proto    => 'tcp',
       action   => 'accept',
       provider => 'iptables',
