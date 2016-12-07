@@ -8,9 +8,7 @@ class beng_fw::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  resources { 'firewall':
-    purge => true,
-  }
+  class { 'firewall': }
   Firewall {
     before  => Class['beng_fw::postv4'],
     require => Class['beng_fw::prev4'],
