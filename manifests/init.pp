@@ -18,9 +18,9 @@ class beng_fw
   $tcp_rangeb = $::beng_fw::params::tcp_rangeb,
   $tcp_rangec = $::beng_fw::params::tcp_rangec,
 # parameter uit puppet v3 code
-  $internal_netA    = '172.18.0.0/16',
-  $internal_netB    = '172.19.0.0/16',
-  $internal_netC    = '178.249.248.128/25',
+  $internal_neta    = '172.18.0.0/16',
+  $internal_netb    = '172.19.0.0/16',
+  $internal_netc    = '178.249.248.128/25',
   $tcp_ports        = $::beng_fw::params::tcp_ports_global,
 # Port range 9300-9400, with variable source rules
   $tcp_rangea_ports = '9300-9400',
