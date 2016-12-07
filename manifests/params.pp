@@ -18,4 +18,5 @@ class beng_fw::params {
   $internal_neta = false
   $internal_netb = false
   $internal_netc = false
+  $udp_ports = false
 }
