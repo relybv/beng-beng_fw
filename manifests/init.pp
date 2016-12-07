@@ -21,7 +21,7 @@ class beng_fw
   $internal_netA    = '172.18.0.0/16',
   $internal_netB    = '172.19.0.0/16',
   $internal_netC    = '178.249.248.128/25',
-  $tcp_ports        = $::beng_fw::param::tcp_ports_global,
+  $tcp_ports        = $::beng_fw::params::tcp_ports_global,
 # Port range 9300-9400, with variable source rules
   $tcp_rangeA_ports = '9300-9400',
   #$tcp_rangeA_src1  = $::beng_fw::tcp_9300_source1,
