@@ -79,7 +79,7 @@ class beng_fw::prev4 {
   # RANGE A
   if $tcp_rangeA_src1 != false {
     firewall { '015 allow internal netA TCP range':
-      dport    => $::beng_fw::params::tcp_rangeA_ports,
+      dport    => $::beng_fw::params::tcp_rangea_ports,
       proto    => 'tcp',
       source   => $::beng_fw::params::tcp_rangea_src1,
       action   => 'accept',
@@ -88,7 +88,7 @@ class beng_fw::prev4 {
   }
   if $tcp_rangeA_src2 != false {
     firewall { '016 allow internal netA TCP range':
-      dport    => $::beng_fw::params::tcp_rangeA_ports,
+      dport    => $::beng_fw::params::tcp_rangea_ports,
       proto    => 'tcp',
       source   => $::beng_fw::params::tcp_rangea_src2,
       action   => 'accept',
@@ -97,7 +97,7 @@ class beng_fw::prev4 {
   }
   if $tcp_rangeA_src3 != false {
     firewall { '017 allow internal netA TCP range':
-      dport    => $::beng_fw::params::tcp_rangeA_ports,
+      dport    => $::beng_fw::params::tcp_rangea_ports,
       proto    => 'tcp',
       source   => $::beng_fw::params::tcp_rangea_src3,
       action   => 'accept',
