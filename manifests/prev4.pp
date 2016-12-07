@@ -65,12 +65,12 @@ class beng_fw::prev4 {
   }
 
   # Check if extra rule 1 is specified
-  if is_hash($tcp_extra_rule1) {
+  if is_hash($::beng_fw::params::tcp_extra_rule1) {
     firewall { '013 allow internal net TCP':
-      dport    => $tcp_extra_rule1[dport],
+      dport    => $::beng_fw::params::tcp_extra_rule1[dport],
       proto    => 'tcp',
-      source   => $tcp_extra_rule1[source],
-      src_range=> $tcp_extra_rule1[src_range],
+      source   => $::beng_fw::params::tcp_extra_rule1[source],
+      src_range=> $::beng_fw::params::tcp_extra_rule1[src_range],
       action   => 'accept',
       provider => 'iptables',
     }
