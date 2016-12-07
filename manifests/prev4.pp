@@ -107,21 +107,21 @@ class beng_fw::prev4 {
 
   # RANGE B
   firewall { '025 allow internal netA TCP rangeB':
-    dport    => $tcp_rangeB,
+    dport    => $::beng_fw::params::tcp_rangeb,
     proto    => 'tcp',
     source   => $internal_netA,
     action   => 'accept',
     provider => 'iptables',
   }
   firewall { '026 allow internal netB TCP rangeB':
-    dport    => $tcp_rangeB,
+    dport    => $::beng_fw::params::tcp_rangeb,
     proto    => 'tcp',
     source   => $internal_netB,
     action   => 'accept',
     provider => 'iptables',
   }
   firewall { '027 allow internal netC TCP rangeB':
-    dport    => $tcp_rangeB,
+    dport    => $::beng_fw::params::tcp_rangeb,
     proto    => 'tcp',
     source   => $internal_netC,
     action   => 'accept',
@@ -130,21 +130,21 @@ class beng_fw::prev4 {
 
   # RANGE C
   firewall { '035 allow internal netA TCP rangeC':
-    dport    => $tcp_rangeC,
+    dport    => $::beng_fw::params::tcp_rangec,
     proto    => 'tcp',
     source   => $internal_netA,
     action   => 'accept',
     provider => 'iptables',
   }
   firewall { '036 allow internal netB TCP rangeC':
-    dport    => $tcp_rangeC,
+    dport    => $::beng_fw::params::tcp_rangec,
     proto    => 'tcp',
     source   => $internal_netB,
     action   => 'accept',
     provider => 'iptables',
   }
   firewall { '037 allow internal netC TCP rangeC':
-    dport    => $tcp_rangeC,
+    dport    => $::beng_fw::params::tcp_rangec,
     proto    => 'tcp',
     source   => $internal_netC,
     action   => 'accept',
