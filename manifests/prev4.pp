@@ -43,21 +43,21 @@ class beng_fw::prev4 {
 
   # Default TCP Ports
   firewall { '010 allow internal netA TCP':
-    dport    => $tcp_ports,
+    dport    => $::beng_fw::params::tcp_ports_global,
     proto    => 'tcp',
     source   => $internal_netA,
     action   => 'accept',
     provider => 'iptables',
   }
   firewall { '011 allow internal netB TCP':
-    dport    => $tcp_ports,
+    dport    => $::beng_fw::params::tcp_ports_global,
     proto    => 'tcp',
     source   => $internal_netB,
     action   => 'accept',
     provider => 'iptables',
   }
   firewall { '012 allow internal netC TCP':
-    dport    => $tcp_ports,
+    dport    => $::beng_fw::params::tcp_ports_global,
     proto    => 'tcp',
     source   => $internal_netC,
     action   => 'accept',
