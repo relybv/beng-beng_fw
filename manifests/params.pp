@@ -15,16 +15,13 @@ class beng_fw::params {
   $tcp_9300_source3= false,
   $tcp_rangeb = false,
   $tcp_rangec = false,
- # $internal_neta = false,
- # $internal_netb = false,
- # $internal_netc = false,
-#  $udp_ports = false
-  # parameter uit puppet v3 code
+  $internal_neta = false,
+  $internal_netb = false,
+  $internal_netc = false,
+  $udp_ports = false,
   $internal_neta    = '172.18.0.0/16',
   $internal_netb    = '172.19.0.0/16',
   $internal_netc    = '178.249.248.128/25',
-# Port range 9300-9400, with variable source rules
   $tcp_rangea_ports = '9300-9400',
-# UDP ports
   $udp_ports = [ '53','123','161'],
 }
