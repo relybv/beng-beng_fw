@@ -21,9 +21,6 @@ class beng_fw
   $internal_netb = $::beng_fw::params::internal_netb,
   $internal_netc = $::beng_fw::params::internal_netc,
   $tcp_ports        = $::beng_fw::params::tcp_ports_global,
-  $tcp_rangea_src1  = $::beng_fw::params::tcp_9300_source1,
-  $tcp_rangea_src2  = $::beng_fw::params::tcp_9300_source2,
-  $tcp_rangea_src3  = $::beng_fw::params::tcp_9300_source3,
   $udp_ports = $::beng_fw::params::udp_ports,
 ) inherits ::beng_fw::params {
 
