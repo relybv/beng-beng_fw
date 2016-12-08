@@ -24,7 +24,6 @@ class beng_fw
   $tcp_extra_rule1 =  $::beng_fw::params::tcp_extra_rule1,
   $tcp_extra_rule1_dport = $::beng_fw::params::tcp_extra_rule1_dport,
   $tcp_extra_rule1_source = $::beng_fw::params::tcp_extra_rule1_source,
-  $tcp_extra_rule1_src_range =  $::beng_fw::params::tcp_extra_rule1_src_range,
 ) inherits ::beng_fw::params {
 
   # validate parameters here

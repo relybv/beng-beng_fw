@@ -22,5 +22,4 @@ class beng_fw::params {
   $tcp_extra_rule1 = false
   $tcp_extra_rule1_dport = false
   $tcp_extra_rule1_source = false
-  $tcp_extra_rule1_src_range = false
 }
