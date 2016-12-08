@@ -11,7 +11,6 @@ class beng_fw
 (
   $tcp_public_ports = $::beng_fw::params::tcp_public_ports,
   $tcp_ports_global = $::beng_fw::params::tcp_ports_global,
-  $tcp_extra_rule1 = $::beng_fw::params::tcp_extra_rule1,
   $tcp_rangea_src1 = $::beng_fw::params::tcp_rangea_src1,
   $tcp_rangea_src2 = $::beng_fw::params::tcp_rangea_src2,
   $tcp_rangea_src3 = $::beng_fw::params::tcp_rangea_src3,
@@ -22,6 +21,10 @@ class beng_fw
   $internal_netc = $::beng_fw::params::internal_netc,
   $tcp_ports        = $::beng_fw::params::tcp_ports_global,
   $udp_ports = $::beng_fw::params::udp_ports,
+  $tcp_extra_rule1 =  $::beng_fw::params::tcp_extra_rule1,
+  $tcp_extra_rule1_dport = $::beng_fw::params::tcp_extra_rule1_dport,
+  $tcp_extra_rule1_source = $::beng_fw::params::tcp_extra_rule1_source,
+  $tcp_extra_rule1_src_range =  $::beng_fw::params::tcp_extra_rule1_src_range,
 ) inherits ::beng_fw::params {
 
   # validate parameters here
