@@ -63,6 +63,14 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
+  # Museum network added 23122016
+  firewall { '013 allow internal netD TCP':
+    dport    => $::beng_fw::tcp_ports_global,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netd,
+    action   => 'accept',
+    provider => 'iptables',
+  }
 
   # Check if extra rule 1 is specified
   if $::beng_fw::tcp_extra_rule1 != false {
@@ -136,6 +144,14 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
+# Museum network added 23122016
+  firewall { '028 allow internal netd TCP rangeB':
+    dport    => $::beng_fw::tcp_rangeb,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netd,
+    action   => 'accept',
+    provider => 'iptables',
+  }
 
   # RANGE C
   firewall { '035 allow internal netA TCP rangeC':
@@ -156,6 +172,14 @@ class beng_fw::prev4 {
     dport    => $::beng_fw::tcp_rangec,
     proto    => 'tcp',
     source   => $::beng_fw::internal_netc,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Museum network added 23122016
+  firewall { '038 allow internal netD TCP rangeC':
+    dport    => $::beng_fw::tcp_rangec,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netd,
     action   => 'accept',
     provider => 'iptables',
   }
