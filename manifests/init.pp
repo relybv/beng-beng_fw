@@ -19,6 +19,7 @@ class beng_fw
   $internal_neta = $::beng_fw::params::internal_neta,
   $internal_netb = $::beng_fw::params::internal_netb,
   $internal_netc = $::beng_fw::params::internal_netc,
+  $internal_netd = $::beng_fw::params::internal_netd,
   $tcp_ports        = $::beng_fw::params::tcp_ports_global,
   $udp_ports = $::beng_fw::params::udp_ports,
   $tcp_extra_rule1 =  $::beng_fw::params::tcp_extra_rule1,
