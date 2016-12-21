@@ -17,6 +17,7 @@ class beng_fw::params {
   $internal_neta = '172.18.0.0/16'
   $internal_netb = '172.19.0.0/16'
   $internal_netc = '178.249.248.128/25'
+  $internal_netc = '192.168.20.0/23'
   $udp_ports = [ '53','123','161']
   $tcp_rangea_ports = false
   $tcp_extra_rule1 = false
