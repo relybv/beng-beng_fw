@@ -31,7 +31,6 @@ class beng_fw
 ) inherits ::beng_fw::params {
 
   # validate parameters here
-  # validate_bool($tcp_public_ports)
 
   class { '::beng_fw::install': }
   -> Class[ '::beng_fw' ]
