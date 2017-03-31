@@ -33,6 +33,6 @@ class beng_fw
   # validate parameters here
   # validate_bool($tcp_public_ports)
 
-  class { '::beng_fw::install': } ->
-  Class[ '::beng_fw' ]
+  class { '::beng_fw::install': }
+  -> Class[ '::beng_fw' ]
 }
