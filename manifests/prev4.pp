@@ -72,7 +72,7 @@ class beng_fw::prev4 {
     provider => 'iptables',
   }
 # Mam network added 18082017
-  firewall { '014 allow internal netD TCP':
+  firewall { '014 allow internal netE TCP':
     dport    => $::beng_fw::tcp_ports_global,
     proto    => 'tcp',
     source   => $::beng_fw::internal_nete,
@@ -162,7 +162,7 @@ class beng_fw::prev4 {
     provider => 'iptables',
   }
 # Mam network added 180820176
-  firewall { '029 allow internal nete TCP rangeB':
+  firewall { '029 allow internal netE TCP rangeB':
     dport    => $::beng_fw::tcp_rangeb,
     proto    => 'tcp',
     source   => $::beng_fw::internal_nete,
