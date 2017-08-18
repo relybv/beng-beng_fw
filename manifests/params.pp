@@ -5,7 +5,7 @@
 #
 class beng_fw::params {
   $tcp_public_ports = false
-  $tcp_ports_global = [ '20','21','22','80','443','445','1556','8000','9100','9200','13720','13724' ]
+  $tcp_ports_global = [ '20','21','22','80','443','445','1556','5666','8000','9100','9200','13720','13724' ]
   $tcp_rangea_src1 = false
   $tcp_rangea_src2 = false
   $tcp_rangea_src3 = false
