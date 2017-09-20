@@ -5,7 +5,7 @@
 #
 class beng_fw::params {
   $tcp_public_ports = false
-  $tcp_ports_global = [ '20','21','22','80','443','445','1556','8000','9100','9200','13720','13724' ]
+  $tcp_ports_global = [ '20','21','22','80','443','445','1556','5666','8000','9100','9200','13720','13724' ]
   $tcp_rangea_src1 = false
   $tcp_rangea_src2 = false
   $tcp_rangea_src3 = false
@@ -18,6 +18,7 @@ class beng_fw::params {
   $internal_netb = '172.19.0.0/16'
   $internal_netc = '178.249.248.128/25'
   $internal_netd = '192.168.20.0/23'
+  $internal_nete = '10.100.0.0/16'
   $udp_ports = [ '53','123','161']
   $tcp_rangea_ports = false
   $tcp_extra_rule1 = false

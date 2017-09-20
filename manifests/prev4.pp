@@ -71,10 +71,19 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
+# Mam network added 18082017
+  firewall { '014 allow internal netE TCP':
+    dport    => $::beng_fw::tcp_ports_global,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_nete,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+
 
   # Check if extra rule 1 is specified
   if $::beng_fw::tcp_extra_rule1 != false {
-    firewall { '013 allow internal net TCP':
+    firewall { '015 allow internal net TCP':
       dport    => $::beng_fw::tcp_extra_rule1_dport,
       proto    => 'tcp',
       source   => $::beng_fw::tcp_extra_rule1_source,
@@ -84,7 +93,7 @@ class beng_fw::prev4 {
   }
   # Check if extra rule 2 is specified
   if $::beng_fw::tcp_extra_rule2 != false {
-    firewall { '014 allow internal net TCP':
+    firewall { '016 allow internal net TCP':
       dport    => $::beng_fw::tcp_extra_rule2_dport,
       proto    => 'tcp',
       source   => $::beng_fw::tcp_extra_rule2_source,
@@ -95,7 +104,7 @@ class beng_fw::prev4 {
 
   # RANGE A
   if $::beng_fw::tcp_rangea_src1 != false {
-    firewall { '015 allow internal netA TCP range':
+    firewall { '017 allow internal netA TCP range':
       dport    => $::beng_fw::tcp_rangea_ports,
       proto    => 'tcp',
       source   => $::beng_fw::tcp_rangea_src1,
@@ -104,7 +113,7 @@ class beng_fw::prev4 {
     }
   }
   if $::beng_fw::tcp_rangea_src2 != false {
-    firewall { '016 allow internal netA TCP range':
+    firewall { '018 allow internal netA TCP range':
       dport    => $::beng_fw::tcp_rangea_ports,
       proto    => 'tcp',
       source   => $::beng_fw::tcp_rangea_src2,
@@ -113,7 +122,7 @@ class beng_fw::prev4 {
     }
   }
   if $::beng_fw::tcp_rangea_src3 != false {
-    firewall { '017 allow internal netA TCP range':
+    firewall { '019 allow internal netA TCP range':
       dport    => $::beng_fw::tcp_rangea_ports,
       proto    => 'tcp',
       source   => $::beng_fw::tcp_rangea_src3,
@@ -152,6 +161,14 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
+# Mam network added 180820176
+  firewall { '029 allow internal netE TCP rangeB':
+    dport    => $::beng_fw::tcp_rangeb,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_nete,
+    action   => 'accept',
+    provider => 'iptables',
+  }
 
   # RANGE C
   firewall { '035 allow internal netA TCP rangeC':
@@ -183,6 +200,14 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
+# Mam network added 18082017
+  firewall { '039 allow internal netE TCP rangeC':
+    dport    => $::beng_fw::tcp_rangec,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_nete,
+    action   => 'accept',
+    provider => 'iptables',
+  }
 
   # UDP rules
   firewall { '020 allow internal netA UDP':
@@ -203,6 +228,14 @@ class beng_fw::prev4 {
     dport    => $::beng_fw::udp_ports,
     proto    => 'udp',
     source   => $::beng_fw::internal_netc,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Mam network added 18082017 
+  firewall { '023 allow internal netE UDP':
+    dport    => $::beng_fw::udp_ports,
+    proto    => 'udp',
+    source   => $::beng_fw::internal_nete,
     action   => 'accept',
     provider => 'iptables',
   }
