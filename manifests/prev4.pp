@@ -1,0 +1,257 @@
+# == Class beng_fw::prev4
+#
+# This class is called from beng_fw for pre config.
+#
+class beng_fw::prev4 {
+  # prevent direct use of subclass
+  if $caller_module_name != $module_name {
+    fail("Use of private class ${name} by ${caller_module_name}")
+  }
+
+  Firewall {
+    require => undef,
+  }
+  # Default and extra tcp ports
+  case $hostname {
+  /^(ltas1|lbas[123]|mws1)/ : {
+    notice ( "Firewall: ${hostname} - Applying 'extra tcp ports ('18086 and 8161')' rule." )
+    $tcp_ports_global = [ '21','22','80','443','445','1556','5666','8000','8161','9100','9200','13720','13724','18086' ]    # call A1601 692 m1710 1445
+  }
+  /^(ltes1|lbes3)/ : {
+    notice ( "Firewall: ${hostname} - Applying 'extra tcp port  ('3306')' rule at ltes1 and lbes3 ." )
+    $tcp_ports_global = [ '21','22','80','443','445','1556','3306','5666','8000','9100','9200','13720','13724' ]    # call m1711 960
+  }
+  default: {
+    notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
+    $tcp_ports_global =$::beng_fw::params::tcp_ports_global,
+  }
+  }
+  # Default firewall rules
+  firewall { '000 accept all icmp':
+    proto    => 'icmp',
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '001 accept all to lo interface':
+    proto    => 'all',
+    iniface  => 'lo',
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '002 accept related established rules':
+    proto    => 'all',
+    state    => ['RELATED', 'ESTABLISHED'],
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  # Check if public ports should be allowed
+  if $::beng_fw::tcp_public_ports != false {
+      firewall { '003 accept all TCP':
+      dport    => $::beng_fw::tcp_public_ports,
+      proto    => 'tcp',
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  # Default TCP Ports
+  firewall { '010 allow internal netA TCP':
+    dport    => $::beng_fw::tcp_ports_global,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_neta,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '011 allow internal netB TCP':
+    dport    => $::beng_fw::tcp_ports_global,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netb,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '012 allow internal netC TCP':
+    dport    => $::beng_fw::tcp_ports_global,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netc,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  # Museum network added 23122016
+  firewall { '013 allow internal netD TCP':
+    dport    => $::beng_fw::tcp_ports_global,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netd,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Mam network added 18082017
+  firewall { '014 allow internal netE TCP':
+    dport    => $::beng_fw::tcp_ports_global,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_nete,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  # Check if extra rule 1 is specified
+}
+ 
+  if $::beng_fw::tcp_extra_rule1 != false {
+    firewall { '015 allow internal net TCP':
+      dport    => $::beng_fw::tcp_extra_rule1_dport,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_extra_rule1_source,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  }
+  # Check if extra rule 2 is specified
+  if $::beng_fw::tcp_extra_rule2 != false {
+    firewall { '016 allow internal net TCP':
+      dport    => $::beng_fw::tcp_extra_rule2_dport,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_extra_rule2_source,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  }
+  # RANGE A
+  if $::beng_fw::tcp_rangea_src1 != false {
+    firewall { '017 allow internal netA TCP range':
+      dport    => $::beng_fw::tcp_rangea_ports,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_rangea_src1,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  }
+  if $::beng_fw::tcp_rangea_src2 != false {
+    firewall { '018 allow internal netA TCP range':
+      dport    => $::beng_fw::tcp_rangea_ports,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_rangea_src2,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  }
+  if $::beng_fw::tcp_rangea_src3 != false {
+    firewall { '019 allow internal netA TCP range':
+      dport    => $::beng_fw::tcp_rangea_ports,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_rangea_src3,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  }
+  # RANGE B
+  firewall { '025 allow internal netA TCP rangeB':
+    dport    => $::beng_fw::tcp_rangeb,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_neta,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '026 allow internal netB TCP rangeB':
+    dport    => $::beng_fw::tcp_rangeb,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netb,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '027 allow internal netC TCP rangeB':
+    dport    => $::beng_fw::tcp_rangeb,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netc,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Museum network added 23122016
+  firewall { '028 allow internal netd TCP rangeB':
+    dport    => $::beng_fw::tcp_rangeb,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netd,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Mam network added 180820176
+  firewall { '029 allow internal netE TCP rangeB':
+    dport    => $::beng_fw::tcp_rangeb,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_nete,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  # RANGE C
+  firewall { '035 allow internal netA TCP rangeC':
+    dport    => $::beng_fw::tcp_rangec,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_neta,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '036 allow internal netB TCP rangeC':
+    dport    => $::beng_fw::tcp_rangec,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netb,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '037 allow internal netC TCP rangeC':
+    dport    => $::beng_fw::tcp_rangec,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netc,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Museum network added 23122016
+  firewall { '038 allow internal netD TCP rangeC':
+    dport    => $::beng_fw::tcp_rangec,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_netd,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Mam network added 18082017
+  firewall { '039 allow internal netE TCP rangeC':
+    dport    => $::beng_fw::tcp_rangec,
+    proto    => 'tcp',
+    source   => $::beng_fw::internal_nete,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  # UDP rules
+  firewall { '020 allow internal netA UDP':
+    dport    => $::beng_fw::udp_ports,
+    proto    => 'udp',
+    source   => $::beng_fw::internal_neta,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+  firewall { '021 allow internal netB UDP':
+    dport    => $::beng_fw::udp_ports,
+    proto    => 'udp',
+    source   => $::beng_fw::internal_netb,
+    action   => 'accept',
+    provider => 'iptables',
+    }
+  firewall { '022 allow internal netC UDP':
+    dport    => $::beng_fw::udp_ports,
+    proto    => 'udp',
+    source   => $::beng_fw::internal_netc,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+# Mam network added 18082017 
+  firewall { '023 allow internal netE UDP':
+    dport    => $::beng_fw::udp_ports,
+    proto    => 'udp',
+    source   => $::beng_fw::internal_nete,
+    action   => 'accept',
+    provider => 'iptables',
+  }
+ }
+ }
+ }
