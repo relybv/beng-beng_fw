@@ -5,7 +5,7 @@
 #
 class beng_fw::params {
   $tcp_public_ports = false
-  $tcp_ports_global = [ '20','21','22','80','443','445','1556','5666','8000','9100','9200','13720','13724' ]
+  $tcp_ports_global = ['21','22','80','443','445','1556','5666','8000','9100','9200','13720','13724' ]
   $tcp_rangea_src1 = false
   $tcp_rangea_src2 = false
   $tcp_rangea_src3 = false
@@ -27,6 +27,7 @@ class beng_fw::params {
   $tcp_extra_rule2 = false
   $tcp_extra_rule2_dport = false
   $tcp_extra_rule2_source = false
+  
   # Default and extra tcp ports
   case $::hostname {
   /^(ltas1|lbas[123]|mws1)/ : {
@@ -35,11 +36,31 @@ class beng_fw::params {
   }
   /^(ltes1|lbes3)/ : {
   #notice ( "Firewall: ${hostname} - Applying 'extra tcp port  ('3306')' rule at ltes1 and lbes3 ." )
-    $tcp_ports_global = [ '21','22','80','443','445','1556','3306','5666','8000','9100','9200','13720','13724' ]    # call m1711 960
+  $tcp_ports_global = [ '21','22','80','443','445','1556','3306','5666','8000','9100','9200','13720','13724' ]    # call m1711 960
   }
   default: {
   #notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
-    $tcp_ports_global =$::beng_fw::params::tcp_ports_global
+  $tcp_ports_global =$::beng_fw::params::tcp_ports_global
   }
   }
-}
+  
+  # Extra ports B
+  case $hostname {
+  # LABS TEST
+  /^(ltas1|lbas2)/ : {
+  #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8097')' rule." )
+	$tcp_rangeb = '8080-8097'     # Extra ports (8080-8087) added,
+  # added port in range to extend to 8097 m1711 1003
+  }
+  /^lbas1/ : {
+  #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8095')' rule." )
+	$tcp_rangeb = '8080-8095'     # Extra ports (8080-8087) added,
+  # added port 8094-8095 call m1610 1393
+  }
+  default: {
+  #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8090')' rule." )
+	$tcp_rangeb = $::beng_fw::params::tcp_rangeb    # Extra ports (8080-8087) added,
+  # added 8088,9089 and 8090 to expand range topdesk call 1411 1218
+  }
+  }
+  }
