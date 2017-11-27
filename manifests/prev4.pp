@@ -112,7 +112,6 @@ class beng_fw::prev4 {
       provider => 'iptables',
     }
   }
-  }
   # RANGE A
   if $::beng_fw::tcp_rangea_src1 != false {
     firewall { '017 allow internal netA TCP range':
@@ -123,7 +122,6 @@ class beng_fw::prev4 {
       provider => 'iptables',
     }
   }
-  }
   if $::beng_fw::tcp_rangea_src2 != false {
     firewall { '018 allow internal netA TCP range':
       dport    => $::beng_fw::tcp_rangea_ports,
@@ -133,7 +131,6 @@ class beng_fw::prev4 {
       provider => 'iptables',
     }
   }
-  }
   if $::beng_fw::tcp_rangea_src3 != false {
     firewall { '019 allow internal netA TCP range':
       dport    => $::beng_fw::tcp_rangea_ports,
@@ -142,7 +139,6 @@ class beng_fw::prev4 {
       action   => 'accept',
       provider => 'iptables',
     }
-  }
   }
   # RANGE B
   firewall { '025 allow internal netA TCP rangeB':
