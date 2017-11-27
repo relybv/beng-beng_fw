@@ -83,7 +83,7 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
-# Mam network added 18082017
+  # Mam network added 18082017
   firewall { '014 allow internal netE TCP':
     dport    => $::beng_fw::tcp_ports_global,
     proto    => 'tcp',
@@ -93,7 +93,6 @@ class beng_fw::prev4 {
   }
   # Check if extra rule 1 is specified
 }
- 
   if $::beng_fw::tcp_extra_rule1 != false {
     firewall { '015 allow internal net TCP':
       dport    => $::beng_fw::tcp_extra_rule1_dport,
@@ -168,15 +167,15 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
-# Museum network added 23122016
-  firewall { '028 allow internal netd TCP rangeB':
+  # Museum network added 23122016
+  firewall { '028 allow internal netD TCP rangeB':
     dport    => $::beng_fw::tcp_rangeb,
     proto    => 'tcp',
     source   => $::beng_fw::internal_netd,
     action   => 'accept',
     provider => 'iptables',
   }
-# Mam network added 180820176
+  # Mam network added 180820176
   firewall { '029 allow internal netE TCP rangeB':
     dport    => $::beng_fw::tcp_rangeb,
     proto    => 'tcp',
@@ -206,7 +205,7 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
-# Museum network added 23122016
+  # Museum network added 23122016
   firewall { '038 allow internal netD TCP rangeC':
     dport    => $::beng_fw::tcp_rangec,
     proto    => 'tcp',
@@ -214,7 +213,7 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
-# Mam network added 18082017
+  # Mam network added 18082017
   firewall { '039 allow internal netE TCP rangeC':
     dport    => $::beng_fw::tcp_rangec,
     proto    => 'tcp',
@@ -244,7 +243,7 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
-# Mam network added 18082017 
+  # Mam network added 18082017 
   firewall { '023 allow internal netE UDP':
     dport    => $::beng_fw::udp_ports,
     proto    => 'udp',
@@ -252,6 +251,6 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
- }
- }
- }
+  }
+  }
+  }
