@@ -25,7 +25,7 @@ case $hostname {
     notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
     $tcp_ports_global =$::beng_fw::params::tcp_ports_global,
   }
-}
+
 
   # Default firewall rules
   firewall { '000 accept all icmp':
@@ -254,5 +254,5 @@ case $hostname {
     action   => 'accept',
     provider => 'iptables',
   }
-
+ }
 }
