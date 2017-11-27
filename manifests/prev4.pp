@@ -231,4 +231,3 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
-  
