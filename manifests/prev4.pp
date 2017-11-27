@@ -92,7 +92,7 @@ class beng_fw::prev4 {
     provider => 'iptables',
   }
   # Check if extra rule 1 is specified
-}
+  }
   if $::beng_fw::tcp_extra_rule1 != false {
     firewall { '015 allow internal net TCP':
       dport    => $::beng_fw::tcp_extra_rule1_dport,
