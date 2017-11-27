@@ -23,7 +23,7 @@ class beng_fw::prev4 {
   }
   default: {
     notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
-    $tcp_ports_global =$::beng_fw::params::tcp_ports_global,
+    $tcp_ports_global =$::beng_fw::params::tcp_ports_global
   }
   }
   # Default firewall rules
