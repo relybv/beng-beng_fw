@@ -102,7 +102,6 @@ class beng_fw::prev4 {
       provider => 'iptables',
     }
   }
-  }
   # Check if extra rule 2 is specified
   if $::beng_fw::tcp_extra_rule2 != false {
     firewall { '016 allow internal net TCP':
