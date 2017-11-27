@@ -247,5 +247,3 @@ class beng_fw::prev4 {
     provider => 'iptables',
   }
   }
-  }
-  }
