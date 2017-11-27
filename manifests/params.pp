@@ -27,7 +27,6 @@ class beng_fw::params {
   $tcp_extra_rule2 = false
   $tcp_extra_rule2_dport = false
   $tcp_extra_rule2_source = false
-  
   # Default and extra tcp ports
   case $::hostname {
   /^(ltas1|lbas[123]|mws1)/ : {
@@ -43,7 +42,6 @@ class beng_fw::params {
   $tcp_ports_global =$::beng_fw::params::tcp_ports_global
   }
   }
-  
   # Extra ports B
   case $::hostname {
   # LABS TEST
