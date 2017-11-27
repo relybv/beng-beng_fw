@@ -27,18 +27,18 @@ class beng_fw::params {
   $tcp_extra_rule2 = false
   $tcp_extra_rule2_dport = false
   $tcp_extra_rule2_source = false
- # Default and extra tcp ports
+  # Default and extra tcp ports
   case $::hostname {
   /^(ltas1|lbas[123]|mws1)/ : {
- #notice ( "Firewall: ${hostname} - Applying 'extra tcp ports ('18086 and 8161')' rule." )
+  #notice ( "Firewall: ${hostname} - Applying 'extra tcp ports ('18086 and 8161')' rule." )
     $tcp_ports_global = [ '21','22','80','443','445','1556','5666','8000','8161','9100','9200','13720','13724','18086' ]    # call A1601 692 m1710 1445
   }
   /^(ltes1|lbes3)/ : {
- #notice ( "Firewall: ${hostname} - Applying 'extra tcp port  ('3306')' rule at ltes1 and lbes3 ." )
+  #notice ( "Firewall: ${hostname} - Applying 'extra tcp port  ('3306')' rule at ltes1 and lbes3 ." )
     $tcp_ports_global = [ '21','22','80','443','445','1556','3306','5666','8000','9100','9200','13720','13724' ]    # call m1711 960
   }
   default: {
- #notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
+  #notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
     $tcp_ports_global =$::beng_fw::params::tcp_ports_global
   }
   }
