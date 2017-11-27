@@ -12,7 +12,7 @@ class beng_fw::params {
   $tcp_9300_source1 = false
   $tcp_9300_source2 = false
   $tcp_9300_source3 = false
-  $tcp_rangeb = '8080-8095'
+  $tcp_rangeb = '8080-8090'
   $tcp_rangec = '8011-8015'
   $internal_neta = '172.18.0.0/16'
   $internal_netb = '172.19.0.0/16'
@@ -45,21 +45,21 @@ class beng_fw::params {
   }
   
   # Extra ports B
-  case $hostname {
+  case $::hostname {
   # LABS TEST
   /^(ltas1|lbas2)/ : {
   #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8097')' rule." )
-	$tcp_rangeb = '8080-8097'     # Extra ports (8080-8087) added,
+  $tcp_rangeb = '8080-8097'     # Extra ports (8080-8087) added,
   # added port in range to extend to 8097 m1711 1003
   }
   /^lbas1/ : {
   #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8095')' rule." )
-	$tcp_rangeb = '8080-8095'     # Extra ports (8080-8087) added,
+  $tcp_rangeb = '8080-8095'     # Extra ports (8080-8087) added,
   # added port 8094-8095 call m1610 1393
   }
   default: {
   #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8090')' rule." )
-	$tcp_rangeb = $::beng_fw::params::tcp_rangeb    # Extra ports (8080-8087) added,
+  $tcp_rangeb = $::beng_fw::params::tcp_rangeb    # Extra ports (8080-8087) added,
   # added 8088,9089 and 8090 to expand range topdesk call 1411 1218
   }
   }
