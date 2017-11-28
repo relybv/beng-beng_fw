@@ -28,7 +28,6 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
- 
   # Default TCP Ports
   firewall { '010 allow internal netA TCP':
     dport    => $::beng_fw::tcp_ports_global,
@@ -182,7 +181,7 @@ class beng_fw::prev4 {
       provider => 'iptables',
     }
   }
-   # RANGE A
+  # RANGE A
   if $::beng_fw::tcp_rangea_src1 != false {
     firewall { '017 allow internal netA TCP range':
       dport    => $::beng_fw::tcp_rangea_ports,
@@ -210,8 +209,8 @@ class beng_fw::prev4 {
       provider => 'iptables',
     }
   }
-   # Check if extra rule 1 is specified
-   if $::beng_fw::tcp_extra_rule1 != false {
+  # Check if extra rule 1 is specified
+  if $::beng_fw::tcp_extra_rule1 != false {
     firewall { '015 allow internal net TCP':
       dport    => $::beng_fw::tcp_extra_rule1_dport,
       proto    => 'tcp',
