@@ -7,7 +7,6 @@ class beng_fw::prev4 {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
-
   Firewall {
     require => undef,
   }
@@ -29,15 +28,7 @@ class beng_fw::prev4 {
     action   => 'accept',
     provider => 'iptables',
   }
-  # Check if public ports should be allowed
-  if $::beng_fw::tcp_public_ports != false {
-      firewall { '003 accept all TCP':
-      dport    => $::beng_fw::tcp_public_ports,
-      proto    => 'tcp',
-      action   => 'accept',
-      provider => 'iptables',
-    }
-  }
+ 
   # Default TCP Ports
   firewall { '010 allow internal netA TCP':
     dport    => $::beng_fw::tcp_ports_global,
@@ -75,55 +66,6 @@ class beng_fw::prev4 {
     source   => $::beng_fw::internal_nete,
     action   => 'accept',
     provider => 'iptables',
-  }
-  # Check if extra rule 1 is specified
-  }
-  if $::beng_fw::tcp_extra_rule1 != false {
-    firewall { '015 allow internal net TCP':
-      dport    => $::beng_fw::tcp_extra_rule1_dport,
-      proto    => 'tcp',
-      source   => $::beng_fw::tcp_extra_rule1_source,
-      action   => 'accept',
-      provider => 'iptables',
-    }
-  }
-  # Check if extra rule 2 is specified
-  if $::beng_fw::tcp_extra_rule2 != false {
-    firewall { '016 allow internal net TCP':
-      dport    => $::beng_fw::tcp_extra_rule2_dport,
-      proto    => 'tcp',
-      source   => $::beng_fw::tcp_extra_rule2_source,
-      action   => 'accept',
-      provider => 'iptables',
-    }
-  }
-  # RANGE A
-  if $::beng_fw::tcp_rangea_src1 != false {
-    firewall { '017 allow internal netA TCP range':
-      dport    => $::beng_fw::tcp_rangea_ports,
-      proto    => 'tcp',
-      source   => $::beng_fw::tcp_rangea_src1,
-      action   => 'accept',
-      provider => 'iptables',
-    }
-  }
-  if $::beng_fw::tcp_rangea_src2 != false {
-    firewall { '018 allow internal netA TCP range':
-      dport    => $::beng_fw::tcp_rangea_ports,
-      proto    => 'tcp',
-      source   => $::beng_fw::tcp_rangea_src2,
-      action   => 'accept',
-      provider => 'iptables',
-    }
-  }
-  if $::beng_fw::tcp_rangea_src3 != false {
-    firewall { '019 allow internal netA TCP range':
-      dport    => $::beng_fw::tcp_rangea_ports,
-      proto    => 'tcp',
-      source   => $::beng_fw::tcp_rangea_src3,
-      action   => 'accept',
-      provider => 'iptables',
-    }
   }
   # RANGE B
   firewall { '025 allow internal netA TCP rangeB':
@@ -230,4 +172,62 @@ class beng_fw::prev4 {
     source   => $::beng_fw::internal_nete,
     action   => 'accept',
     provider => 'iptables',
+  }
+  # Check if public ports should be allowed
+  if $::beng_fw::tcp_public_ports != false {
+      firewall { '003 accept all TCP':
+      dport    => $::beng_fw::tcp_public_ports,
+      proto    => 'tcp',
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+   # RANGE A
+  if $::beng_fw::tcp_rangea_src1 != false {
+    firewall { '017 allow internal netA TCP range':
+      dport    => $::beng_fw::tcp_rangea_ports,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_rangea_src1,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  if $::beng_fw::tcp_rangea_src2 != false {
+    firewall { '018 allow internal netA TCP range':
+      dport    => $::beng_fw::tcp_rangea_ports,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_rangea_src2,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  if $::beng_fw::tcp_rangea_src3 != false {
+    firewall { '019 allow internal netA TCP range':
+      dport    => $::beng_fw::tcp_rangea_ports,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_rangea_src3,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+   # Check if extra rule 1 is specified
+   if $::beng_fw::tcp_extra_rule1 != false {
+    firewall { '015 allow internal net TCP':
+      dport    => $::beng_fw::tcp_extra_rule1_dport,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_extra_rule1_source,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
+  # Check if extra rule 2 is specified
+  if $::beng_fw::tcp_extra_rule2 != false {
+    firewall { '016 allow internal net TCP':
+      dport    => $::beng_fw::tcp_extra_rule2_dport,
+      proto    => 'tcp',
+      source   => $::beng_fw::tcp_extra_rule2_source,
+      action   => 'accept',
+      provider => 'iptables',
+    }
+  }
   }
