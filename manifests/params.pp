@@ -38,9 +38,8 @@ class beng_fw::params {
   $tcp_ports_global = [ '21','22','80','443','445','1556','3306','5666','8000','9100','9200','13720','13724' ]    # call m1711 960
   }
   default: {
-  #notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
-  $tcp_ports_global = $::beng_fw::params::tcp_ports_global
-  }
+  notice ( "Firewall: ${hostname} - Using default tcp_ports rule." )
+    }
   }
   # Extra ports B
   case $::hostname {
@@ -57,7 +56,7 @@ class beng_fw::params {
   }
   default: {
   #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8090')' rule." )
-  $tcp_rangeb = $::beng_fw::params::tcp_rangeb    # Extra ports (8080-8087) added,
+  # $tcp_rangeb = $::beng_fw::params::tcp_rangeb    # Extra ports (8080-8087) added,
   # added 8088,9089 and 8090 to expand range topdesk call 1411 1218
   }
   }
