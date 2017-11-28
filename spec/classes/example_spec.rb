@@ -42,6 +42,7 @@ describe 'beng_fw' do
           it { is_expected.to contain_firewall('036 allow internal netB TCP rangeC') }
           it { is_expected.to contain_firewall('037 allow internal netC TCP rangeC') }
           it { is_expected.to contain_firewall('038 allow internal netD TCP rangeC') }
+          it { is_expected.to contain_firewall('039 allow internal netE TCP rangeC') }
           it { is_expected.to contain_firewall('900 log all drop connections') }
           it { is_expected.to contain_firewall('950 drop udp') }
           it { is_expected.to contain_firewall('951 drop tcp') }
