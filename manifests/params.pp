@@ -45,8 +45,8 @@ class beng_fw::params {
   case $::hostname {
   # LABS TEST
   /^(ltas1|lbas2)/ : {
-  #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8097')' rule." )
-  $tcp_rangeb = '8080-8097'     # Extra ports (8080-8087) added,
+  #notice ( "Firewall: ${hostname} - Applying ' RangeB tcp ports ('8080-8100')' rule." )
+  $tcp_rangeb = '8080-8100'     # Extra ports (8080-8087) added,
   # added port in range to extend to 8097 m1711 1003
   }
   /^lbas1/ : {
